@@ -23,7 +23,7 @@
 #ifdef __AVR__
   #include <avr/power.h>
 #endif
-#define PIN       1
+#define PIN       12
 #define NUMPIXELS 10
 void Set_Color_Red (void);
 void Set_Color_Yellow(void);
@@ -42,7 +42,7 @@ void Set_Color_Red (uint16_t Outside_Brightness){
   #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
   clock_prescale_set(clock_div_1);
   #endif
-  pixels.setPin(1);
+  pixels.setPin(12);
   pixels.begin();
   pixels.setBrightness(255 * Outside_Brightness / 19456); // Maximum LED Brightness multiplied by the input value, divided by the maximum input value
   pixels.clear();
@@ -58,7 +58,7 @@ void Set_Color_Yellow(uint16_t Outside_Brightness){
   #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
   clock_prescale_set(clock_div_1);
   #endif
-  pixels.setPin(1);
+  pixels.setPin(12);
   pixels.begin();
   pixels.setBrightness(255 * Outside_Brightness / 19456); // Maximum LED Brightness multiplied by the input value, divided by the maximum input value
   pixels.clear();

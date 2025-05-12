@@ -24,7 +24,7 @@ int nbrPersonne = 0;
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(5, INPUT);
+  pinMode(14, INPUT);
   
   // Initialize Serial port
   Serial.begin(9600);
@@ -90,11 +90,11 @@ void setup() {
 // the loop function runs over and over again forever
 void loop() {
 
-  if((digitalRead(5)) == 0){
-  Set_Color_Red(511);
+  if((digitalRead(14)) == 0){
+  Set_Color_Red(light_data);
   }
-  if((digitalRead(5)) == 1){
-    Set_Color_Yellow(511);   
+  if((digitalRead(14)) == 1){
+    Set_Color_Yellow(light_data);   
   }
   
   // Read the proximity value
@@ -125,6 +125,12 @@ void loop() {
     Serial.print("Light: ");
     Serial.println(light_data);
   }
+  if (proximity_data == 1023){
+    nbrPersonne++;
+    Serial.print("Personnes passé: ");
+    Serial.println(nbrPersonne);
+  }
+
   
   // Wait 3000 ms before next reading
   delay(120);
