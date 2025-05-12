@@ -3,6 +3,11 @@
 #include <PolledTimeout.h>
 #include <APDS9930.h>
 #include "affichage.h"
+#include <DEL_Control.h>
+#include <Adafruit_NeoPixel.h>
+#ifdef __AVR__
+  #include <avr/power.h>
+#endif
 
 #define DUMP_REGS
 
@@ -17,7 +22,10 @@ int nbrPersonne = 0;
 
 // the setup function runs once when you press reset or power the board
 void setup() {
-
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(5, INPUT);
+  
   // Initialize Serial port
   Serial.begin(9600);
   Serial.println();
@@ -78,8 +86,16 @@ void setup() {
 #endif
 }
 
+
 // the loop function runs over and over again forever
 void loop() {
+
+  if((digitalRead(5)) == 0){
+  Set_Color_Red(511);
+  }
+  if((digitalRead(5)) == 1){
+    Set_Color_Yellow(511);   
+  }
   
   // Read the proximity value
   if ( !apds.readProximity(proximity_data) ) {
