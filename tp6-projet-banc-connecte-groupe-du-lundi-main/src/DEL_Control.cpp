@@ -38,13 +38,13 @@ Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 // }
 
 
-void Set_Color_Red (void){
+void Set_Color_Red (uint16_t Outside_Brightness){
   #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
   clock_prescale_set(clock_div_1);
   #endif
   pixels.setPin(1);
   pixels.begin();
-  pixels.setBrightness(50);
+  pixels.setBrightness(255 * Outside_Brightness / 19456); // Maximum LED Brightness multiplied by the input value, divided by the maximum input value
   pixels.clear();
 
   for(int i=0; i<NUMPIXELS; i++) {
@@ -54,13 +54,13 @@ void Set_Color_Red (void){
   }
 }
 
-void Set_Color_Yellow(void){
+void Set_Color_Yellow(uint16_t Outside_Brightness){
   #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
   clock_prescale_set(clock_div_1);
   #endif
   pixels.setPin(1);
   pixels.begin();
-  pixels.setBrightness(50);
+  pixels.setBrightness(255 * Outside_Brightness / 19456); // Maximum LED Brightness multiplied by the input value, divided by the maximum input value
   pixels.clear();
 
   for(int i=0; i<NUMPIXELS; i++) {
@@ -69,3 +69,4 @@ void Set_Color_Yellow(void){
     pixels.show();
   }
 }
+

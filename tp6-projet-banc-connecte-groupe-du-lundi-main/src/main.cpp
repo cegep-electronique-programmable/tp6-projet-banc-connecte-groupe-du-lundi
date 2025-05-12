@@ -10,14 +10,18 @@
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
+  
 }
+
 
 // the loop function runs over and over again forever
 void loop() {
-  // if(GPIO_PIN_SOURCE_GET(3) == '1'){
-    Set_Color_Red();
-  // }
-  if(GPIO_PIN_SOURCE_GET(3) == '0'){
-    Set_Color_Yellow();
+  pinMode(5, INPUT);
+  
+  if((digitalRead(5)) == 0){
+    Set_Color_Red(511);
+  }
+  if((digitalRead(5)) == 1){
+    Set_Color_Yellow(511);   
   }
 }
