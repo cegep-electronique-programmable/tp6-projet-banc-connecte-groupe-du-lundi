@@ -10,6 +10,12 @@
 #endif
 
 #define DUMP_REGS
+//=====================================================================================
+//  Le code suivant permet de déterminer si quelqu'un est en train de charger son téléphone,
+//  la LED va allume en rouge sinon LED allume en jaune. La luminosité de la lumière va dépendre 
+//  de la luminosité capté par le capteur de APDS9930. Le nombre de personne passé est aussi 
+//  enregistré et imprimer au terminal a chaque fois qu'une personne est détecté.
+//=====================================================================================
 
 // Global Variables
 APDS9930 apds = APDS9930();
@@ -90,11 +96,11 @@ void setup() {
 // the loop function runs over and over again forever
 void loop() {
 
-  if((digitalRead(14)) == 0){
-  Set_Color_Red(light_data);
+  if((digitalRead(14)) == 0){ 
+  Set_Color_Red(light_data); // couleur rouge + brightness en fonction de light_data
   }
   if((digitalRead(14)) == 1){
-    Set_Color_Yellow(light_data);   
+    Set_Color_Yellow(light_data);  // couleur rouge + brightness en fonction de light_data 
   }
   
   // Read the proximity value
